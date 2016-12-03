@@ -65,9 +65,6 @@ body {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
 
   /* Remove the padding we set earlier */
   .header,
@@ -86,4 +83,23 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.food_content_info {
+  border: solid 1px;
+}
+
+.nav_header {
+  border-top: solid 1px;
+  border-left: solid 1px;
+  border-bottom: solid 1px;
+}
+.nav_content {
+  border-top: solid 1px;
+  border-left: solid 1px;
+}
+
+.medium-img {
+  max-width: :150px;
+  max-height: 250px;
 }
