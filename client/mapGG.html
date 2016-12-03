@@ -4,25 +4,23 @@
 	<title>FoodMap</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="libs/slick/slick/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="libs/slick/slick/slick-theme.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./styles/javascript.fullPage.css" />
 	<link rel="stylesheet" type="text/css" href="./libs/style_mapgg.css">
-	<script type="text/javascript" src="libs/slick/slick/slick.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9Hv9ZLpamdWJsNCR0hDgwerJkXouG7LE&callback=initMap"></script>
+	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9Hv9ZLpamdWJsNCR0hDgwerJkXouG7LE&callback=initMap"></script> -->
+	<script type="text/javascript" src="./js/javascript.fullPage.js"></script>
 	<script type="text/javascript" src="./js/script_mapgg.js"></script>
 </head>
 
 <body>
-	<div class="header">
+<!-- 	<div class="header">
 		<h1>Miền Bắc</h1>
 		<select size="1" id="location_list" onchange="setLocation()">
 			<option lat=21.1164157 lng=105.9586897>Bắc Ninh</option>
@@ -34,6 +32,51 @@
 			<option value="vinhphuc">Vĩnh Phúc</option>
 		</select>
 	</div>
-	<div id="map"></div>
+	<div id="map"></div> -->
+
+	<div id="fullpage">
+		<div class="section " id="section0">
+			<div class="content">
+				<h1>fullPage.js</h1>
+				<p>Javascript only version</p>
+			</div>
+		</div>
+		<div class="section" id="section1">
+			<div class="slide" id="slide1">
+				<div class="content">
+					<h1>No need for jQuery</h1>
+					<p>
+						5 Kb gzipped!!
+					</p>
+					<p>
+						Improve the loading time of your site!
+					</p>
+				</div>
+			</div>
+			<div class="slide" id="slide2">
+				<div class="content">
+					<h1>Slides too!</h1>
+				</div>
+			</div>
+			<div class="slide" id="slide2">
+				<div class="content">
+					<h1>More slides!</h1>
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section2">
+			<div class="content">
+				<h1>Compatible</h1>
+				<p>IE 8+ support.</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		fullpage.initialize('#fullpage', {
+			anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+			menu: '#menu',
+			css3:true
+		});
+	</script>
 </body>
 </html>
