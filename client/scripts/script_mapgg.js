@@ -40,7 +40,7 @@ function initMap() {
 			position: new google.maps.LatLng(21.0539617,105.7879371),
 			type: 'food',
 			content:"<p>Our content is here</p>",
-			url:"http://news.zing.vn/5-quan-pho-ngon-nuc-tieng-cua-ha-noi-post546154.html"
+			url:"fooddetailpage.html"
 		}
 	];
 
