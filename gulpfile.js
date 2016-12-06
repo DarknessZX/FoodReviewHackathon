@@ -81,7 +81,7 @@ gulp.task('serve', () => {
     browserSync({
       proxy: "localhost:8888",
       notify: false,
-      port: 9000,
+      port: 8888,
       files: ['.tmp', 'client', 'server']
     });
 
@@ -89,7 +89,8 @@ gulp.task('serve', () => {
       'client/*.html',
       'client/scripts/**/*.js',
       'client/images/**/*',
-      '.tmp/fonts/**/*'
+      '.tmp/fonts/**/*',
+      '!logs/**/*'
     ]).on('change', reload);
 
     gulp.watch('client/styles/**/*.css', ['styles']);

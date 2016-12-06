@@ -11,7 +11,8 @@ var user = new Schema({
   age: Number,
   username: {
     type: String,
-    lowercase: true
+    lowercase: true,
+    unique: true
   },
   role: {
     type: String,

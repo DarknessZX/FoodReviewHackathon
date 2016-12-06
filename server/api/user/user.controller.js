@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('./user.model');
+var auth = require('../auth/auth.service');
 
 module.exports = {
   deleteUser: function(req, res){
@@ -19,6 +20,7 @@ module.exports = {
         }
       })
   },
+
   edit: function(req,res){
     if(req.body){
       User.findOne({username: req.body.username}).exec(function(err, data){
@@ -41,6 +43,7 @@ module.exports = {
       res.json({status: false, message: 'Update fail!!!'})
     }
   },
+
   addUser: function(req, res) {
     if (req.body) {
       User.findOne({username: req.body.username}).exec(function(err, data){
@@ -118,6 +121,32 @@ module.exports = {
       });
     } else {
       res.json([]);
+    }
+  },
+
+  login : function(req, res){
+    if(req.body.username) {
+      User.findOne({username: req.body.username}).exec(function(err, data){
+        if(err) {
+          console.error(err);
+          res.json({code: 0, message: err});
+        }
+        else {
+          if(data.authenticate(req.body.password)) {
+            var request = {
+              user : data
+            };
+            auth.setTokenCookie(request, res);
+            res.json({code: 1, message: "login Success"});
+          }
+          else { //password is incorrect
+            console.info('user '+ data._id + ' wrong password');
+            res.json({code: 0, message: 'wrong password'});
+          }
+        }
+      })
+    } else{
+
     }
   }
 }
