@@ -1,36 +1,73 @@
 
 var map;
 var map1;
-var map2;
+var map2,map3,map4,map5,map6,map7,map8;
 function initMap() {
-	var map = new google.maps.Map(document.getElementById('map'), {
+	 map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 16,
 		center: new google.maps.LatLng(21.0539617,105.7879371),
 		mapTypeId: 'roadmap'
 	});
 
-	var map1 = new google.maps.Map(document.getElementById('map1'), {
+	 map1 = new google.maps.Map(document.getElementById('map1'), {
 		zoom: 16,
 		center: new google.maps.LatLng(21.0539610,105.7879379),
 		mapTypeId: 'roadmap'
 	});
 
-	var map2 = new google.maps.Map(document.getElementById('map2'), {
+	 map2 = new google.maps.Map(document.getElementById('map2'), {
 		zoom: 16,
 		center: new google.maps.LatLng(21.0539611,105.7879372),
 		mapTypeId: 'roadmap'
 	});
 
-	map1 = new google.maps.Map(document.getElementById('map1'), {
-			zoom: 16,
-			center: new google.maps.LatLng(16.0587793,108.1761346),
-			mapTypeId: 'roadmap'
+	 map3 = new google.maps.Map(document.getElementById('map'), {
+		zoom: 16,
+		center: new google.maps.LatLng(21.0539617,105.7879371),
+		mapTypeId: 'roadmap'
 	});
-	map2 = new google.maps.Map(document.getElementById('map2'), {
-			zoom: 16,
-			center: new google.maps.LatLng(10.7680519,106.4141714),
-			mapTypeId: 'roadmap'
+
+	 map4 = new google.maps.Map(document.getElementById('map4'), {
+		zoom: 16,
+		center: new google.maps.LatLng(21.0539610,105.7879379),
+		mapTypeId: 'roadmap'
 	});
+
+	 map5 = new google.maps.Map(document.getElementById('map5'), {
+		zoom: 16,
+		center: new google.maps.LatLng(21.0539611,105.7879372),
+		mapTypeId: 'roadmap'
+	});
+
+	 map6 = new google.maps.Map(document.getElementById('map6'), {
+		zoom: 16,
+		center: new google.maps.LatLng(21.0539617,105.7879371),
+		mapTypeId: 'roadmap'
+	});
+
+	 map7 = new google.maps.Map(document.getElementById('map7'), {
+		zoom: 16,
+		center: new google.maps.LatLng(21.0539610,105.7879379),
+		mapTypeId: 'roadmap'
+	});
+
+	 map8 = new google.maps.Map(document.getElementById('map8'), {
+		zoom: 16,
+		center: new google.maps.LatLng(21.0539611,105.7879372),
+		mapTypeId: 'roadmap'
+	});
+
+
+	// map1 = new google.maps.Map(document.getElementById('map1'), {
+	// 		zoom: 16,
+	// 		center: new google.maps.LatLng(16.0587793,108.1761346),
+	// 		mapTypeId: 'roadmap'
+	// });
+	// map2 = new google.maps.Map(document.getElementById('map2'), {
+	// 		zoom: 16,
+	// 		center: new google.maps.LatLng(10.7680519,106.4141714),
+	// 		mapTypeId: 'roadmap'
+	// });
 	
 	var icons = {
 		food: {
