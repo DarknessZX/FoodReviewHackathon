@@ -1,12 +1,26 @@
+
 var map;
 var map1;
 var map2;
 function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
+	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 16,
 		center: new google.maps.LatLng(21.0539617,105.7879371),
 		mapTypeId: 'roadmap'
 	});
+
+	var map1 = new google.maps.Map(document.getElementById('map1'), {
+		zoom: 16,
+		center: new google.maps.LatLng(21.0539610,105.7879379),
+		mapTypeId: 'roadmap'
+	});
+
+	var map2 = new google.maps.Map(document.getElementById('map2'), {
+		zoom: 16,
+		center: new google.maps.LatLng(21.0539611,105.7879372),
+		mapTypeId: 'roadmap'
+	});
+
 	map1 = new google.maps.Map(document.getElementById('map1'), {
 			zoom: 16,
 			center: new google.maps.LatLng(16.0587793,108.1761346),
@@ -65,6 +79,7 @@ function setLocation(x){
 	var lat= document.getElementById(x)[idx].getAttribute('lat')
 	var lng = document.getElementById(x)[idx].getAttribute('lng');
 	var location={lat:Number(lat),lng:Number(lng)}
+
 	switch(x){
 		case 'bac':
 			console.log(location)
@@ -80,5 +95,3 @@ function setLocation(x){
 			break
 	}
  }
-// -----------------------------------------------------------------------------
-
