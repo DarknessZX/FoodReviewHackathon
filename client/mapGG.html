@@ -1,79 +1,64 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>FoodMap</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="./styles/jquery.fullPage.css" />
-		<link rel="stylesheet" type="text/css" href="./styles/style_mapgg.css">
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9Hv9ZLpamdWJsNCR0hDgwerJkXouG7LE&callback=initMap"></script>
-		<script type="text/javascript" src="./js/jquery.fullPage.min.js"></script>
-		<script type="text/javascript" src="./js/script_mapgg.js"></script>
-		<script type="text/javascript" src="./js/main.js"></script>
-	</head>
-	<body>	
-		<div id="fullpage">
-    		<div class="section">		
-        		<div class="slide">
-        			<div class="header">
-						<h1>Mi?n B?c</h1>
-						<select size="1" id="bac" onchange="setLocation('bac')">
-							<option lat=21.1164157 lng=105.9586897>Bac Ninh</option>
-							<option value="caobang">Cao B?ng</option>
-							<option value="hanoi" selected="selected">H?Noi</option>
-							<option value="hagiang">H?Giang</option>
-							<option value="laichau">Lai Ch?</option>
-							<option value="yenbai">Y? B?</option>
-							<option value="vinhphuc">Vinh Ph?c</option>
-						</select>
-					</div>
-        			<div id="map"></div>
-        		</div>
-        		<div class="slide">
-        		<div class="header">
-						<h1>Mi?n Trung</h1>
-						<select size="1" id="bac" onchange="setLocation('bac')">
-							<option lat=16.0470775 lng=108.1712138>Bac Ninh</option>
-							<option value="caobang">Cao B?ng</option>
-							<option value="hanoi" selected="selected">H?N?i</option>
-							<option value="hagiang">H?Giang</option>
-							<option value="laichau">Lai Ch?</option>
-							<option value="yenbai">Y? B?</option>
-							<option value="vinhphuc">Vinh Ph?c</option>
-						</select>
-					</div>
-        			<div id="map3"></div>
-        		</div>
-        		<!-- <div class="slide">
-        		<div class="header">
-						<h1>Mi?n Nam</h1>
-						<select size="1" id="bac" onchange="setLocation('bac')">
-							<option lat=10.7680519 lng=106.4141629>Bac Ninh</option>
-							<option value="caobang">Cao B?ng</option>
-							<option value="hanoi" selected="selected">H?Noi</option>
-							<option value="hagiang">H?Giang</option>
-							<option value="laichau">Lai Ch?</option>
-							<option value="yenbai">Y? B?</option>
-							<option value="vinhphuc">Vinh Ph?c</option>
-						</select>
-					</div>
-        			<div id="map2"></div>
-        		</div> -->
-    		</div>
-            <div class="section">       
-                <div class="slide">
-                    <div class="header">
-                        <h1>Mi?n B?c</h1>
-                        <select size="1" id="trung" onchange="setLocation('trung')">
-                            <option lat=21.1164157 lng=105.9586897>Bac Ninh</option>
+
+<head>
+    <title>FoodMap</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./styles/jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/style_mapgg.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9Hv9ZLpamdWJsNCR0hDgwerJkXouG7LE&callback=initMap"></script>
+    <script type="text/javascript" src="./js/jquery.fullPage.min.js"></script>
+    <script type="text/javascript" src="./js/script_mapgg.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+</head>
+
+<body>
+    <div id="fullpage">
+        <div class="section">
+            <div class="slide">
+                <div class="header">
+                    <h1>Mi?n B?c</h1>
+                    <select size="1" id="bac" onchange="setLocation('bac')">
+                        <option lat=21.1164157 lng=105.9586897>Bac Ninh</option>
+                        <option value="caobang">Cao B?ng</option>
+                        <option value="hanoi" selected="selected">H?Noi</option>
+                        <option value="hagiang">H?Giang</option>
+                        <option value="laichau">Lai Ch?</option>
+                        <option value="yenbai">Y? B?</option>
+                        <option value="vinhphuc">Vinh Ph?c</option>
+                    </select>
+                </div>
+                <div id="map"></div>
+            </div>
+            <div class="slide">
+                <div class="header">
+                    <h1>Mi?n Trung</h1>
+                    <select size="1" id="bac" onchange="setLocation('bac')">
+                        <option lat=16.0470775 lng=108.1712138>Bac Ninh</option>
+                        <option value="caobang">Cao B?ng</option>
+                        <option value="hanoi" selected="selected">H?N?i</option>
+                        <option value="hagiang">H?Giang</option>
+                        <option value="laichau">Lai Ch?</option>
+                        <option value="yenbai">Y? B?</option>
+                        <option value="vinhphuc">Vinh Ph?c</option>
+                    </select>
+                </div>
+                <div id="map3"></div>
+            </div>
+            <!-- <div class="slide">
+                <div class="header">
+                        <h1>Mi?n Nam</h1>
+                        <select size="1" id="bac" onchange="setLocation('bac')">
+                            <option lat=10.7680519 lng=106.4141629>Bac Ninh</option>
                             <option value="caobang">Cao B?ng</option>
                             <option value="hanoi" selected="selected">H?Noi</option>
                             <option value="hagiang">H?Giang</option>
@@ -82,9 +67,26 @@
                             <option value="vinhphuc">Vinh Ph?c</option>
                         </select>
                     </div>
-                    <div id="map1"></div>
+                    <div id="map2"></div>
+                </div> -->
+        </div>
+        <div class="section">
+            <div class="slide">
+                <div class="header">
+                    <h1>Mi?n B?c</h1>
+                    <select size="1" id="trung" onchange="setLocation('trung')">
+                        <option lat=21.1164157 lng=105.9586897>Bac Ninh</option>
+                        <option value="caobang">Cao B?ng</option>
+                        <option value="hanoi" selected="selected">H?Noi</option>
+                        <option value="hagiang">H?Giang</option>
+                        <option value="laichau">Lai Ch?</option>
+                        <option value="yenbai">Y? B?</option>
+                        <option value="vinhphuc">Vinh Ph?c</option>
+                    </select>
                 </div>
-                <!-- <div class="slide">
+                <div id="map1"></div>
+            </div>
+            <!-- <div class="slide">
                 <div class="header">
                         <h1>Mi?n Trung</h1>
                         <select size="1" id="trung" onchange="setLocation('trung')">
@@ -114,24 +116,24 @@
                     </div>
                     <div id="map5"></div>
                 </div> -->
-            </div>
-            <div class="section">       
-                <div class="slide">
-                    <div class="header">
-                        <h1>Mi?n B?c</h1>
-                        <select size="1" id="nam" onchange="setLocation('nam')">
-                            <option lat=21.1164157 lng=105.9586897>Bac Ninh</option>
-                            <option value="caobang">Cao B?ng</option>
-                            <option value="hanoi" selected="selected">H?Noi</option>
-                            <option value="hagiang">H?Giang</option>
-                            <option value="laichau">Lai Ch?</option>
-                            <option value="yenbai">Y? B?</option>
-                            <option value="vinhphuc">Vinh Ph?c</option>
-                        </select>
-                    </div>
-                    <div id="map2"></div>
+        </div>
+        <div class="section">
+            <div class="slide">
+                <div class="header">
+                    <h1>Mi?n B?c</h1>
+                    <select size="1" id="nam" onchange="setLocation('nam')">
+                        <option lat=21.1164157 lng=105.9586897>Bac Ninh</option>
+                        <option value="caobang">Cao B?ng</option>
+                        <option value="hanoi" selected="selected">H?Noi</option>
+                        <option value="hagiang">H?Giang</option>
+                        <option value="laichau">Lai Ch?</option>
+                        <option value="yenbai">Y? B?</option>
+                        <option value="vinhphuc">Vinh Ph?c</option>
+                    </select>
                 </div>
-               <!--  <div class="slide">
+                <div id="map2"></div>
+            </div>
+            <!--  <div class="slide">
                 <div class="header">
                         <h1>Mi?n Trung</h1>
                         <select size="1" id="nam" onchange="setLocation('nam')">
@@ -161,8 +163,8 @@
                     </div>
                     <div id="map8"></div>
                 </div> -->
-            </div>
-		</div>
+        </div>
+    </div>
+</body>
 
-	</body>
 </html>
