@@ -65,11 +65,9 @@ module.exports = {
   /**
    * Returns a jwt token signed by the app secret
    */
-  signToken: function(id, role) {
-    return jwt.sign({ _id: id, role: role }, config.secret, {
-      expiresIn: 60 * 30
-    });
-  },
+  // signToken: function(id, role) {
+  //   return
+  // },
 
   /**
    * Set token cookie directly for oAuth strategies
@@ -78,8 +76,11 @@ module.exports = {
     if (!req.user) {
       return res.status(404).send('It looks like you aren\'t logged in, please try again.');
     }
-    var token = signToken(req.user._id, req.user.role);
+    var token =jwt.sign({ _id: req.user._id, role: req.user.role }, config.secret, {
+      expiresIn: 60 * 30
+    });
+    console.log(token);
     res.cookie('token', token);
-    res.redirect('/');
+    // res.redirect('/');
   }
 }

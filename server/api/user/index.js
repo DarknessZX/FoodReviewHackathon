@@ -12,5 +12,6 @@ router.get('/find', controller.find);
 router.put('/edit',controller.edit);
 router.delete('/delete/:username',controller.deleteUser);
 router.post('/create',controller.addUser);
+router.post('/login', controller.login);
 
 module.exports = router;
