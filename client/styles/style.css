@@ -274,6 +274,10 @@ h1 {
     z-index: 999;
 }
 
+#myBtn {
+    border: none;
+}
+
 @keyframes imageAnimation {
     0% {
         animation-timing-function: ease-in;
