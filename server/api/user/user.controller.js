@@ -147,7 +147,17 @@ module.exports = {
                 }
             })
         } else {
-
+            res.json({code: 0, message: 'username not available'});
         }
-    }
+    },
+
+  me: function(req, res) {
+    if (req.cookies.token){
+     auth.decodeToken(req.cookies.token, function(user){
+       res.json({code: 1, user: user});
+     });
+   } else {
+     res.json({code: 0, message: 'token is not set'});
+   }
+  }
 }

@@ -76,11 +76,17 @@ module.exports = {
     if (!req.user) {
       return res.status(404).send('It looks like you aren\'t logged in, please try again.');
     }
-    var token =jwt.sign({ _id: req.user._id, role: req.user.role }, config.secret, {
+    var token =jwt.sign({ _id: req.user._id, role: req.user.role, username: req.user.username }, config.secret, {
       expiresIn: 60 * 30
     });
     console.log(token);
     res.cookie('token', token);
     // res.redirect('/');
+  },
+
+  decodeToken: function(token, cb) {
+    var decoded = jwt.verify(token, config.secret);
+    console.log(decoded);
+    cb(decoded);
   }
 }

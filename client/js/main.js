@@ -30,7 +30,8 @@ $(document).ready(function() {
         }
     }
 
-
+    //console.log($.cookie("token"));
+    checkToken();
 });
 
 window.fbAsyncInit = function() {
