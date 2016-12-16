@@ -10,17 +10,7 @@ function login(){
         if(res.code) {
 					console.log(res);
 					$('#myModal').hide();
-					$('#user_login').html(res.username);
-					$(".header_personal").css({ "visibility": "hidden" });
-					$('#user_login').css({
-					"background-color" : "#fff",
-					"font-weight" : "bold",
-					"width" : "100px",
-					"text-align" : "center",
-					"border-radius" : "5px",
-					"padding" : "5px 0px",
-					"margin-top" : "-33px",
-					"text-overflow" : "hidden"})
+					setUsername(res.username);
         }
         else {
         	alert(res.message);
@@ -60,9 +50,7 @@ function checkToken() {
 		function(res) {
 			if (res.code) {
 				console.log("token valid");
-				$('#user_login').show();
-				$( "#user_login" )
-					.html(res.user.username);
+				setUsername(res.user.username);
 				$('.header_personal').hide();
 			} else {
 				console.log("token invalid");
@@ -71,4 +59,18 @@ function checkToken() {
 			}
 		}
 	)
+}
+
+function setUsername(username) {
+	$('#user_login').html(username);
+	$(".header_personal").css({ "visibility": "hidden" });
+	$('#user_login').css({
+	"background-color" : "#fff",
+	"font-weight" : "bold",
+	"width" : "100px",
+	"text-align" : "center",
+	"border-radius" : "5px",
+	"padding" : "5px 0px",
+	"margin-top" : "-33px",
+	"text-overflow" : "hidden"})
 }
