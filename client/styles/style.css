@@ -282,6 +282,7 @@ h1 {
 
 #myBtn {
     border: none;
+    outline: none;
 }
 
 @keyframes imageAnimation {
