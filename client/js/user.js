@@ -10,12 +10,17 @@ function login(){
         if(res.code) {
 					console.log(res);
 					$('#myModal').hide();
-					setUsername(res.username);							
+					setUsername(res.username);
+					$('#button_logout').show();
         }
         else {
         	alert(res.message);
         }
     });
+}
+
+function logout() {
+	document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 function signup(){
@@ -51,9 +56,11 @@ function checkToken() {
 			if (res.code) {
 				console.log("token valid");
 				setUsername(res.user.username);
+				$('#button_logout').show();
 			} else {
 				console.log("token invalid");
 				$('.header_personal').show();
+				$('#button_logout').hide();
 			}
 		}
 	)
