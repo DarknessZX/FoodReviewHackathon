@@ -11,11 +11,22 @@ function setUsername(username) {
 	"margin-top" : "-33px",
 	"text-overflow" : "hidden"})
 }
-function login(){
+
+function login(userinfo){
+
+	if (userinfo) {
+		username = userinfo.username;
+		password = userinfo.password;
+	} else {
+		username = $('#username').val();
+		password = $('#password').val();
+	}
+
 	var formData = {
-		username: $('#username').val(),
-		password: $('#password').val()
+		username: username,
+		password: password
 	};
+
 	//console.log(formData);
 	$.post("/api/user/login",
     formData,
@@ -56,6 +67,12 @@ function signup(){
 			function(res) {
 					if (res.status) {
 						$('#myModal').hide();
+						userinfo = {
+							username: username,
+							password: password
+						}
+						console.log(userinfo);
+						login(userinfo);
 					} else {
 						console.log(res);
 						$('#signup_status').html(res.message);
@@ -83,5 +100,3 @@ function checkToken() {
 		}
 	)
 }
-
-
