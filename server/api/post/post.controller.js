@@ -71,4 +71,35 @@ module.exports = {
     });
   },
 
+  getposts : function(req, res) {
+    if (req.params.postId) {
+      logger.log('debug', 'START - find post by post Id %s', req.params.postid);
+      Post.find({_id: req.params.postId}).exec(function(err,data) {
+        if (!err) {
+          res.json({code : 1, result: data});
+        } else {
+          res.json({code : 0, message: err});
+        }
+      });
+    }
+  },
+
+  edit : function(req, res) {
+    if (req.body) {
+      Post.findOne({_id: req.body._id}).exec(function(err,data) {
+          if (data) {
+            data.title = req.body.title;
+            data.location = req.body.location;
+            data.images = req.body.images;
+            data.content = req.body.images;
+            data.recipes = req.body.recipes;
+            data.user = req.body.user;
+          }
+          data.save(function(err,data) {
+            
+            res.json({})
+          })
+      });
+    }
+  }
 }
