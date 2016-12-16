@@ -132,6 +132,7 @@ header {
 
 button.sb.facebook {
     background-image: url(../img/white_facebook.png);
+    outline: none;
 }
 
 a.sb.google {
