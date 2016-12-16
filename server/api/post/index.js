@@ -8,7 +8,7 @@ var router = express.Router();
 
 router.get('/', auth.isAuthenticated() ,controller.getAll);
 router.post('/create', auth.isAuthenticated(), controller.create);
-router.get('/getposts/:postid', controller.findPostById);
+//router.get('/getposts/:postid', controller.findPostById);
 router.post('/edit:post', controller.edit);
 
 module.exports = router;
