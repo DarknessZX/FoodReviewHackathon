@@ -13,9 +13,9 @@ module.exports = function(User) {
     } );
 
     passport.use(new FacebookStrategy({
-      clientID: '1190346094375499',
-      clientSecret: '182fe23321b3155e98adabb5091d13a0',
-      callbackURL: 'http://local.techkids.com:7000/api/auth/facebook/callback'
+      clientID: '144438419375480',
+      clientSecret: 'f84cd9438e7c61ea765e47bad919a7e0',
+      callbackURL: 'http://localhost:8888/api/auth/facebook/callback'
     },
     function(accessToken, refreshToken, profile, cb) {
       console.log(profile);
