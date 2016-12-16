@@ -12,14 +12,18 @@ var user = new Schema({
   username: {
     type: String,
     lowercase: true,
-    unique: true
+    unique: true,
+    require: true
   },
   role: {
     type: String,
     default: 'user'
   },
   salt: String,
-  password: String
+  password: {
+    type: String,
+    require: true
+  }
 });
 
 user.plugin(findOrCreate);

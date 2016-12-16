@@ -28,9 +28,10 @@ function signup(){
 		formData,
 		function(res) {
 				if (res.status) {
-					console.log(res);
+					$('#myModal').hide();
 				} else {
-					alert(res.message);
+					console.log(res);
+					$('#signup_status').html(res.message);
 				}
 		}
 	);

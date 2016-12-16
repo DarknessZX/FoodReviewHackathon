@@ -28,13 +28,6 @@
 </head>
 
 <body>
-  <div id="fb-root"></div>
-<script>
-
-
-</script>
-
-
     <header>
         <div class="container">
             <div class="row">
@@ -84,7 +77,7 @@
                                                 <div class="top-row">
                                                     <div class="field-wrap">
                                                         <label>
-                                                            Name<span class="req">*</span>
+                                                            Name
                                                         </label>
                                                         <input type="text" id="name" required autocomplete="off" />
                                                     </div>
@@ -109,13 +102,18 @@
                                                 </div>
                                                 <button type="submit" class="button button-block" onclick="signup()"/>Get Started</button>
                                             </div>
+                                            <div class="label label-danger" id="signup_status"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <script src="./js/index.js"></script>
                             </div>
                         </div>
+<<<<<<< 95409da6cce579b627af6c7c780c94b0a89648bc
                         <button onclick="loginFb()" class="header_login sb small blue facebook">Facebook </button>
+=======
+                        <a href="#" class="header_login sb small blue facebook">Facebook</a>
+>>>>>>> Hide sign up modal when sign up success
                         <a href="#" class="header_login sb normal blue google">Google</a>
                     </div>
                     <div id="user_login">
