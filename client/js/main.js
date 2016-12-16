@@ -59,8 +59,10 @@ $(document).ready(function() {
              var accessToken = FB.getAuthResponse().accessToken;
              console.log(response);
              console.log(accessToken);
-             $( "div.header_personal" )
-               .html(response.name );
+             $( "#user_login" )
+               .html(response.name);
+               $(".header_personal").css(
+                { "visibility": "hidden" });
            });
         } else {
          console.log('User cancelled login or did not fully authorize.');

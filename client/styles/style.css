@@ -61,9 +61,10 @@ header {
     position: relative;
 }
 
-#user_login{
+#use_login{
   position: absolute;
-  top: 15px;
+  margin-top: -25px;
+  
 }
 
 /*.header_login{
@@ -74,7 +75,7 @@ header {
     padding: 6px 21px;
     background-color: #449D44;
     border-color: #AAFF7F;
-    border: none;
+    border: solid 1px #b8b8b9;
     border-radius: 7px;
     /*background-color:*/
 }
@@ -137,7 +138,6 @@ header {
 
 button.sb.facebook {
     background-image: url(../img/white_facebook.png);
-    outline: none;
 }
 
 a.sb.google {
@@ -280,11 +280,14 @@ h1 {
     z-index: 999;
 }
 
+<<<<<<< HEAD
 #myBtn {
     border: none;
     outline: none;
 }
 
+=======
+>>>>>>> name_user login
 @keyframes imageAnimation {
     0% {
         animation-timing-function: ease-in;
