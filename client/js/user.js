@@ -10,7 +10,18 @@ function login(){
         if(res.code) {
 					console.log(res);
 					$('#myModal').hide();
-					setUsername(res.username);
+					setUsername(res.username);					
+					$('#user_login').html(res.username);
+					$(".header_personal").css({ "visibility": "hidden" });
+					$('#user_login').css({ 
+					"background-color" : "#fff",
+					"font-weight" : "bold", 
+					"width" : "100px", 
+					"text-align" : "center",
+					"border-radius" : "5px",
+					"padding" : "5px 0px",
+					"margin-top" : "-33px",
+					"text-overflow" : "hidden"})		
         }
         else {
         	alert(res.message);
