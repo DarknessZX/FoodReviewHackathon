@@ -10,8 +10,9 @@ function login(){
         if(res.code) {
 					console.log(res);
 					$('#myModal').hide();
-					$('div.header_personal').hide();
-					$('#user_login').html(res.username);			
+					
+					$('#user_login').html(res.username);
+					$(".header_personal").css({ "visibility": "hidden" });		
         }
         else {
         	alert(res.message);

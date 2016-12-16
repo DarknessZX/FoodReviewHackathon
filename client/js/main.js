@@ -33,41 +33,42 @@ $(document).ready(function() {
 
 });
 
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '144438419375480',
-        xfbml      : true,
-        version    : 'v2.8'
-      });
-      FB.AppEvents.logPageView();
-    };
+window.fbAsyncInit = function() {
+    FB.init({
+        appId: '144438419375480',
+        xfbml: true,
+        version: 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+};
 
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+        return; }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 
-    function loginFb(){
-      FB.login(function(response) {
+function loginFb() {
+    FB.login(function(response) {
         if (response.authResponse) {
-           console.log('Welcome!  Fetching your information.... ');
-           FB.api('/me', function(response) {
-             var accessToken = FB.getAuthResponse().accessToken;
-             console.log(response);
-             console.log(accessToken);
-             $( "#user_login" )
-               .html(response.name);
-               $(".header_personal").css(
-                { "visibility": "hidden" });
-           });
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function(response) {
+                var accessToken = FB.getAuthResponse().accessToken;
+                console.log(response);
+                console.log(accessToken);
+                $("#user_login")
+                    .html(response.name);
+                $(".header_personal").css({ "visibility": "hidden" });
+            });
         } else {
-         console.log('User cancelled login or did not fully authorize.');
+            console.log('User cancelled login or did not fully authorize.');
         }
-      });
-    }
+    });
+}
 
 //
