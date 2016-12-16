@@ -1,6 +1,6 @@
 var map;
 var map1;
-var map2, map3, map4, map5, map6, map7, map8;
+var map2;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -18,12 +18,6 @@ function initMap() {
     map2 = new google.maps.Map(document.getElementById('map2'), {
         zoom: 16,
         center: new google.maps.LatLng(21.0539611, 105.7879372),
-        mapTypeId: 'roadmap'
-    });
-
-    map3 = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: new google.maps.LatLng(21.0539617, 105.7879371),
         mapTypeId: 'roadmap'
     });
 

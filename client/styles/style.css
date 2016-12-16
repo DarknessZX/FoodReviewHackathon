@@ -64,6 +64,9 @@ header {
 #user_login{
   position: absolute;
   margin-top: -25px;
+  color: #AAAAFF;
+  font-weight: bolder;
+  font-size: 15px;
 }
 
 /*.header_login{
