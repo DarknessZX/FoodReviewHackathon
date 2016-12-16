@@ -59,7 +59,12 @@ module.exports = {
           }
           console.log(newUser);
           User.create(newUser, function(err, data){
-            res.json({status: true, message: 'Success'});
+            if (err) {
+              console.log("Err:" + err);
+              res.json({code: 0, message: err});
+            } else {
+              res.json({status: true, message: 'Success'});
+            }
           });
         }
       });

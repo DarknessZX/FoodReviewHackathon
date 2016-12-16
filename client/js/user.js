@@ -18,22 +18,26 @@ function login(){
 }
 
 function signup(){
-	var formData = {
-		username: $('#username_signup').val(),
-		password: $('#password_signup').val(),
-		name : $('#name').val(),
-		age : $('#age').val()
-	};
-	console.log(formData);
-	$.post("/api/user/create",
-		formData,
-		function(res) {
-				if (res.status) {
-					$('#myModal').hide();
-				} else {
-					console.log(res);
-					$('#signup_status').html(res.message);
-				}
-		}
-	);
+	username = $('#username_signup').val();
+	password = $('#password_signup').val();
+	if (username != '' && password != '') {
+		var formData = {
+			username: $('#username_signup').val(),
+			password: $('#password_signup').val(),
+			name : $('#name').val(),
+			age : $('#age').val()
+		};
+		console.log(formData);
+		$.post("/api/user/create",
+			formData,
+			function(res) {
+					if (res.status) {
+						$('#myModal').hide();
+					} else {
+						console.log(res);
+						$('#signup_status').html(res.message);
+					}
+			}
+		);
+	} $('#signup_status').html('Username and password is required');
 }
