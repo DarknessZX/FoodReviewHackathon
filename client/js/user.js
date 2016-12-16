@@ -9,6 +9,7 @@ function login(){
     function(res){
         if(res.code) {
 					console.log(res);
+					$('#myModal').hide();
         }
         else {
         	alert(res.message);
