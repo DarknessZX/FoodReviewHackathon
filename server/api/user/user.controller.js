@@ -142,7 +142,7 @@ module.exports = {
               user : data
             };
             auth.setTokenCookie(request, res);
-            res.json({code: 1, message: 'login Success'});
+            res.json({code: 1, message: 'login Success',username:req.body.username});
           }
           else { //password is incorrect
             console.info('user '+ data._id + ' wrong password');
