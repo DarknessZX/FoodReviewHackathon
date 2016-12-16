@@ -59,10 +59,13 @@ $(document).ready(function() {
              var accessToken = FB.getAuthResponse().accessToken;
              console.log(response);
              console.log(accessToken);
+             $( "div.header_personal" )
+               .html(response.name );
            });
         } else {
          console.log('User cancelled login or did not fully authorize.');
         }
       });
-
     }
+
+//
