@@ -52,6 +52,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
     "lodash": "^4.16.6",
