@@ -4,7 +4,7 @@ function login(){
 		password: $('#password').val()
 	};
 	//console.log(formData);
-	$.post("https://arcane-hollows-49001.herokuapp.com/api/user/login",
+	$.post("/api/user/login",
     formData,
     function(res){
         if(res.code) {
@@ -39,5 +39,7 @@ function signup(){
 					}
 			}
 		);
-	} $('#signup_status').html('Username and password is required');
+	} else {
+		$('#signup_status').html('Username and password is required');
+	}
 }
