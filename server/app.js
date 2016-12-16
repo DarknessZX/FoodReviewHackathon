@@ -7,6 +7,7 @@ var http = require('http');
 // Setup server
 var app = express();
 var server = http.createServer(app);
+
 require('./config/express')(app);
 
 // config routes
