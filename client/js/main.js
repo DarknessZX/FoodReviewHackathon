@@ -64,6 +64,15 @@ function loginFb() {
                 $("#user_login")
                     .html(response.name);
                 $(".header_personal").css({ "visibility": "hidden" });
+                $('#user_login').css({ 
+                    "background-color" : "#fff",
+                    "font-weight" : "bold", 
+                    "width" : "100px", 
+                    "text-align" : "center",
+                    "border-radius" : "5px",
+                    "padding" : "5px 0px",
+                    "margin-top" : "-33px",
+                    "text-overflow" : "hidden"})
             });
         } else {
             console.log('User cancelled login or did not fully authorize.');
