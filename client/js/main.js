@@ -74,6 +74,8 @@ function loginFb() {
                     "padding" : "5px 0px",
                     "margin-top" : "-33px",
                     "text-overflow" : "hidden"})
+                $('#button_logout').show();
+                $('#button_logout').css({"width":"100px","float":"right","margin-top":"-33px"})
             });
         } else {
             console.log('User cancelled login or did not fully authorize.');

@@ -1,3 +1,16 @@
+function setUsername(username) {
+	$('#user_login').html(username);
+	$(".header_personal").css({ "visibility": "hidden" });
+	$('#user_login').css({
+	"background-color" : "#fff",
+	"font-weight" : "bold",
+	"width" : "100px",
+	"text-align" : "center",
+	"border-radius" : "5px",
+	"padding" : "5px 0px",
+	"margin-top" : "-33px",
+	"text-overflow" : "hidden"})
+}
 function login(){
 	var formData = {
 		username: $('#username').val(),
@@ -12,6 +25,7 @@ function login(){
 					$('#myModal').hide();
 					setUsername(res.username);
 					$('#button_logout').show();
+					$('#button_logout').css({"width":"100px","float":"right","margin-top":"-33px"})
         }
         else {
         	alert(res.message);
@@ -21,6 +35,9 @@ function login(){
 
 function logout() {
 	document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	$('#user_login').hide();
+	$('#button_logout').hide();
+	$(".header_personal").css({ "visibility": "visible" });
 }
 
 function signup(){
@@ -57,6 +74,7 @@ function checkToken() {
 				console.log("token valid");
 				setUsername(res.user.username);
 				$('#button_logout').show();
+				$('#button_logout').css({"width":"100px","float":"right","margin-top":"-33px"})
 			} else {
 				console.log("token invalid");
 				$('.header_personal').show();
@@ -66,16 +84,4 @@ function checkToken() {
 	)
 }
 
-function setUsername(username) {
-	$('#user_login').html(username);
-	$(".header_personal").css({ "visibility": "hidden" });
-	$('#user_login').css({
-	"background-color" : "#fff",
-	"font-weight" : "bold",
-	"width" : "100px",
-	"text-align" : "center",
-	"border-radius" : "5px",
-	"padding" : "5px 0px",
-	"margin-top" : "-33px",
-	"text-overflow" : "hidden"})
-}
+
