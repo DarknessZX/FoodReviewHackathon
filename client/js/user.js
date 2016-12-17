@@ -13,43 +13,21 @@ function setUsername(username) {
     })
 }
 
-<<<<<<< 6533f9b884e064deb9fd85a1973f2b6a554d41a2
-function login(userinfo){
+function login(userinfo) {
 
-	if (userinfo) {
-		username = userinfo.username;
-		password = userinfo.password;
-	} else {
-		username = $('#username').val();
-		password = $('#password').val();
-	}
+    if (userinfo) {
+        username = userinfo.username;
+        password = userinfo.password;
+    } else {
+        username = $('#username').val();
+        password = $('#password').val();
+    }
 
-	var formData = {
-		username: username,
-		password: password
-	};
-
-	//console.log(formData);
-	$.post("/api/user/login",
-    formData,
-    function(res){
-        if(res.code) {
-					console.log(res);
-					$('#myModal').hide();
-					setUsername(res.username);
-					$('#button_logout').show();
-					$('#button_logout').css({"width":"100px","float":"right","margin-top":"-33px"})
-        }
-        else {
-        	alert(res.message);
-        }
-    });
-=======
-function login() {
     var formData = {
-        username: $('#username').val(),
-        password: $('#password').val()
+        username: username,
+        password: password
     };
+
     //console.log(formData);
     $.post("/api/user/login",
         formData,
@@ -64,7 +42,6 @@ function login() {
                 alert(res.message);
             }
         });
->>>>>>> fix css trung nhau
 }
 
 function logout() {
@@ -74,39 +51,6 @@ function logout() {
     $(".header_personal").css({ "visibility": "visible" });
 }
 
-<<<<<<< 6533f9b884e064deb9fd85a1973f2b6a554d41a2
-function signup(){
-	username = $('#username_signup').val();
-	password = $('#password_signup').val();
-	if (username != '' && password != '') {
-		var formData = {
-			username: $('#username_signup').val(),
-			password: $('#password_signup').val(),
-			name : $('#name').val(),
-			age : $('#age').val()
-		};
-		console.log(formData);
-		$.post("/api/user/create",
-			formData,
-			function(res) {
-					if (res.status) {
-						$('#myModal').hide();
-						userinfo = {
-							username: username,
-							password: password
-						}
-						console.log(userinfo);
-						login(userinfo);
-					} else {
-						console.log(res);
-						$('#signup_status').html(res.message);
-					}
-			}
-		);
-	} else {
-		$('#signup_status').html('Username and password is required');
-	}
-=======
 function signup() {
     username = $('#username_signup').val();
     password = $('#password_signup').val();
@@ -132,7 +76,7 @@ function signup() {
     } else {
         $('#signup_status').html('Username and password is required');
     }
->>>>>>> fix css trung nhau
+
 }
 
 function checkToken() {
@@ -142,12 +86,12 @@ function checkToken() {
                 console.log("token valid");
                 setUsername(res.user.username);
                 $('#button_logout').show();
-                $('#button_logout').css({ "width": "100px", "float": "right", "margin-top": "-33px" })
+                $('#button_logout').css({ "width": "100px", "float": "right", "margin-top": "-33px" });
             } else {
                 console.log("token invalid");
                 $('.header_personal').show();
                 $('#button_logout').hide();
             }
         }
-    )
+    );
 }
