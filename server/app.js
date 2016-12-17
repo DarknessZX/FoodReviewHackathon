@@ -6,7 +6,10 @@ var fileUpload = require('express-fileupload');
 var http = require('http');
 // Setup server
 var app = express();
+<<<<<<< 4a621e9c1b378662cd90fc46e0a84141796240e8
 // app.use(fileUpload());
+=======
+>>>>>>> fix login local
 
 app.use(function (req, res, next) {
 
