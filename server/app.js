@@ -6,7 +6,7 @@ var fileUpload = require('express-fileupload');
 var http = require('http');
 // Setup server
 var app = express();
-app.use(fileUpload());
+// app.use(fileUpload());
 
 app.use(function (req, res, next) {
 
