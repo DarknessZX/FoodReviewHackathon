@@ -20,12 +20,16 @@
     <link rel="stylesheet" href="styles/_all-skins.min.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="styles/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="styles/admin_style.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -104,19 +108,19 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="form-group">
                             <label>TITLE</label>
-                            <input name="title" value="title" type="text" class="form-control" placeholder="Title here">
+                            <input name="title"  type="text" class="form-control" placeholder="Title here">
                         </div>
                         <div class="form-group">
                             <label>LOCATION</label>
-                            <input name="location" value="location" type="text" class="form-control" placeholder="Location here">
+                            <input name="location"  type="text" class="form-control" placeholder="Location here">
                         </div>
                         <div class="form-group">
                             <label>LONGITUDE</label>
-                            <input name="longitude" value="longitude" type="text" class="form-control" placeholder="Longitude">
+                            <input name="longitude"  type="text" class="form-control" placeholder="Longitude">
                         </div>
                         <div class="form-group">
                             <label>LATITUDE</label>
-                            <input name="latitude" value="latitude" type="text" class="form-control" placeholder="Latitude">
+                            <input name="latitude" type="text" class="form-control" placeholder="Latitude">
                         </div>
                         <div class="form-group">
                             <div class="box">
@@ -135,10 +139,44 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>IMAGES</label>
-                            <input type="file" multiple="true" name="image[]" value="image" />
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Recipe
+                                        <small>Recipe content</small>
+                                    </h3>
+                                    <!-- /. tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body pad">
+                                    <form>
+                                        <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="wrapper">
+                            <div class="left-column">
+                              <!-- D&D Markup -->
+                              <div id="drag-and-drop-zone" class="uploader">
+                                <div>Drag &amp; Drop Images Here</div>
+                                <div class="or">-or-</div>
+                                <div class="browser">
+                                  <label>
+                                    <span>Click to open the file Browser</span>
+                                    <input type="file" name="files[]" multiple="multiple" title='Click to add Files'>
+                                  </label>
+                                </div>
+                              </div>
+                              <!-- /D&D Markup -->
+                            </div>
+                            <div id="fileList">
+                              <!-- Files will be places here -->
+                            </div>
+                          </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
+
                         <!-- <button type="reset" value="reset" class="btn btn-danger">Reset</button> -->
                     </div>
                 </div>
@@ -172,6 +210,99 @@
     <script src="js/admin2.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="dist/js/demo.js"></script> -->
+    <script type="text/javascript" src="js/dmuploader.min.js"></script>
+    <script type="text/javascript">
+
+      //-- Some functions to work with our UI
+      function add_log(message)
+      {
+        var template = '<li>[' + new Date().getTime() + '] - ' + message + '</li>';
+
+        $('#debug').find('ul').prepend(template);
+      }
+
+      function add_file(id, file)
+      {
+        var template = '' +
+          '<div class="file" id="uploadFile' + id + '">' +
+            '<div class="info">' +
+              '#1 - <span class="filename" title="Size: ' + file.size + 'bytes - Mimetype: ' + file.type + '">' + file.name + '</span><br /><small>Status: <span class="status">Waiting</span></small>' +
+            '</div>' +
+            '<div class="bar">' +
+              '<div class="progress" style="width:0%"></div>' +
+            '</div>' +
+          '</div>';
+
+          $('#fileList').prepend(template);
+      }
+
+      function update_file_status(id, status, message)
+      {
+        $('#uploadFile' + id).find('span.status').html(message).addClass(status);
+      }
+
+      function update_file_progress(id, percent)
+      {
+        $('#uploadFile' + id).find('div.progress').width(percent);
+      }
+
+      // Upload Plugin itself
+      $('#drag-and-drop-zone').dmUploader({
+        url: 'http://localhost:8888/upload',
+        dataType: 'json',
+        allowedTypes: 'image/*',
+        /*extFilter: 'jpg;png;gif',*/
+        onInit: function(){
+          add_log('Penguin initialized :)');
+        },
+        onBeforeUpload: function(id){
+          add_log('Starting the upload of #' + id);
+
+          update_file_status(id, 'uploading', 'Uploading...');
+        },
+        onNewFile: function(id, file){
+          add_log('New file added to queue #' + id);
+
+          add_file(id, file);
+        },
+        onComplete: function(){
+          add_log('All pending tranfers finished');
+        },
+        onUploadProgress: function(id, percent){
+          var percentStr = percent + '%';
+
+          update_file_progress(id, percentStr);
+        },
+        onUploadSuccess: function(id, data){
+          add_log('Upload of file #' + id + ' completed');
+
+          add_log('Server Response for file #' + id + ': ' + JSON.stringify(data));
+
+          update_file_status(id, 'success', 'Upload Complete');
+
+          update_file_progress(id, '100%');
+        },
+        onUploadError: function(id, message){
+          add_log('Failed to Upload file #' + id + ': ' + message);
+
+          update_file_status(id, 'error', message);
+        },
+        onFileTypeError: function(file){
+          add_log('File \'' + file.name + '\' cannot be added: must be an image');
+
+        },
+        onFileSizeError: function(file){
+          add_log('File \'' + file.name + '\' cannot be added: size excess limit');
+        },
+        /*onFileExtError: function(file){
+          $.danidemo.addLog('#demo-debug', 'error', 'File \'' + file.name + '\' has a Not Allowed Extension');
+        },*/
+        onFallbackMode: function(message){
+          alert('Browser not supported(do something else here!): ' + message);
+        }
+      });
+    </script>
+
 </body>
 
 </html>

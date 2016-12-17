@@ -2,10 +2,12 @@
 
 var express = require('express');
 var config = require('./config/environment');
+var fileUpload = require('express-fileupload');
 var http = require('http');
-
 // Setup server
 var app = express();
+app.use(fileUpload());
+
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -24,6 +26,13 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+
+
+app.post('/upload', function(req, res){
+  console.log(req.files);
+})
+
+
 var server = http.createServer(app);
 
 require('./config/express')(app);
@@ -41,6 +50,9 @@ db.on('error', console.error.bind(console, 'DB connection error: '));
 db.once('open', function() {
   console.log('DB connection success! ');
 });
+
+
+
 
 // Start server
 server.listen(config.port, config.ip, function() {

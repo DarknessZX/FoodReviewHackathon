@@ -62,13 +62,14 @@ function loginFb() {
                 var accessToken = FB.getAuthResponse().accessToken;
                 console.log(response);
                 console.log(accessToken);
+                var avatar = "http://graph.facebook.com/"+ response.id +"/picture";
                 $("#user_login")
                     .html(response.name);
                 $(".header_personal").css({ "visibility": "hidden" });
-                $('#user_login').css({ 
+                $('#user_login').css({
                     "background-color" : "#fff",
-                    "font-weight" : "bold", 
-                    "width" : "100px", 
+                    "font-weight" : "bold",
+                    "width" : "100px",
                     "text-align" : "center",
                     "border-radius" : "5px",
                     "padding" : "5px 0px",
