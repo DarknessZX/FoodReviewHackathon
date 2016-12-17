@@ -48,7 +48,9 @@ function logout() {
     document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     $('#user_login').hide();
     $('#button_logout').hide();
+    $("#user_image").css({ "visibility": "hidden" });
     $(".header_personal").css({ "visibility": "visible" });
+
 }
 
 function signup() {
