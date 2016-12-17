@@ -78,7 +78,6 @@ function signup() {
     } else {
         $('#signup_status').html('Username and password is required');
     }
-
 }
 
 function checkToken() {
