@@ -63,6 +63,9 @@ function loginFb() {
                 console.log(response);
                 console.log(accessToken);
                 var avatar = "http://graph.facebook.com/"+ response.id +"/picture";
+                console.log(avatar);
+                document.getElementById('user_image').innerHTML= '<img  src=' + avatar + ' style="float:right;width:40px;border-radius:21px;">';
+                // $('#user_image').css({"margin-top": "-36px","margin-right": "10px","float": "right","hight": "43px","width": "40px","border-radius":" 21px"});
                 $("#user_login")
                     .html(response.name);
                 $(".header_personal").css({ "visibility": "hidden" });
@@ -77,6 +80,8 @@ function loginFb() {
                     "text-overflow" : "hidden"})
                 $('#button_logout').show();
                 $('#button_logout').css({"width":"100px","float":"right","margin-top":"-33px"})
+                $('#user_image').css({"margin-top": "-36px","margin-right": "10px","float": "right","hight": "43px","width": "40px","border-radius":" 21px"});
+
             });
         } else {
             console.log('User cancelled login or did not fully authorize.');
